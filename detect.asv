@@ -114,7 +114,7 @@ stats = regionprops(L, 'Area', 'Centroid');
 
 %{
 Fairly low threshold for now,
-elements greater than this are marked 
+elements over this are marked 
 %}
 threshold = 0.8;
 
@@ -123,20 +123,20 @@ for k = 1:length(B)
     % Obtain (X,Y) boundary coords corresponding to label 'k'
     boundary = B{k};
     
-    % Compute estimate of object's perimeter
+    %Compute estimate of object's perimeter
     delta_sq = diff(boundary).^2;
     perimeter = sum(sqrt(sum(delta_sq, 2)));
     
-    % Obtain area calculation corresponding to label 'k'
+    %obtain area calculation corresponding to label 'k'
     area = stats(k).Area;
     
-    % Computer roundness metric [KEY]
+    %Computer roundness metric [KEY]
     metric = 4*pi*area/perimeter^2;
     
-    % Display results (
+    %Display results (
     metric_string = sprintf('%2.2f/1', metric);
     
-    % Mark objects above threshold with black circle
+    %Mark objects above threshold with black circle
     if metric > threshold
         centroid = stats(k).Centroid;
         % Plot settings (ro = red)

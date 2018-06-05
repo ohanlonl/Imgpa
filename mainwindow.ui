@@ -119,6 +119,9 @@
    </property>
   </widget>
   <action name="actionImport_images">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>(Debug) Print Paths</string>
    </property>
